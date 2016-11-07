@@ -225,19 +225,19 @@ public class GoodsList {
 "   and g.goods_image = i.id_image_tab\n");
 
         if (type == SearchType.FOR_BOY) {
-            sql.append(" and s.sex_name='Мальчики' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase() + "%' order by ct.cloth_name_one  " );
+            sql.append(" and s.sex_name='Мальчики' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
 
         } else if (type == SearchType.FOR_GIRL) {
-            sql.append(" and s.sex_name='Девочки' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase() + "%' order by ct.cloth_name_one  " );
+            sql.append(" and s.sex_name='Девочки' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
         }
         else if (type == SearchType.FOR_MAN) {
-            sql.append(" and s.sex_name='Мужчины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase() + "%' order by ct.cloth_name_one  " );
+            sql.append(" and s.sex_name='Мужчины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
         }
         else if (type == SearchType.FOR_WOMEN) {
-            sql.append(" and s.sex_name='Женщины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase() + "%' order by ct.cloth_name_one  " );
+            sql.append(" and s.sex_name='Женщины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
         } 
         else if (type == SearchType.FOR_ALL) {
-            sql.append(" and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase() + "%' order by ct.cloth_name_one  " );
+            sql.append(" and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
         }
         sql.append(" limit 0,5");
 
@@ -245,6 +245,7 @@ public class GoodsList {
         
         return getGoods(sql.toString());
 
+       
 
     }
     

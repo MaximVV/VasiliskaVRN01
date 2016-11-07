@@ -37,31 +37,28 @@
         } else if (request.getParameter("search_string") != null) {
                                     
             
-            list = goodsList.getGoodsByLetter("Ш");
+//            list = goodsList.getGoodsByLetter("Ш");
               
-//              String searchStr = request.getParameter("search_string");
-//            
-//              list = goodsList.getGoodsBySearch(searchStr, SearchType.FOR_ALL);
 
-//            String searchStr = request.getParameter("search_string");
-//            SearchType type = SearchType.FOR_ALL;
-//
-//            if (request.getParameter("search_option").equals("Мальчикам")) {
-//                type = SearchType.FOR_BOY;
-//            }
-//            if (request.getParameter("search_option").equals("Мужчинам")) {
-//                type = SearchType.FOR_MAN;
-//            }
-//            if (request.getParameter("search_option").equals("Женщинам")) {
-//                type = SearchType.FOR_WOMEN;
-//            }
-//            if (request.getParameter("search_option").equals("Девочкам")) {
-//                type = SearchType.FOR_GIRL;
-//            }
-//
-//            if (searchStr != null && !searchStr.trim().equals("")) {
-//                list = goodsList.getGoodsBySearch(searchStr, type);
-//            }
+            String searchStr = request.getParameter("search_string");
+            SearchType type = SearchType.FOR_ALL;
+
+            if (request.getParameter("search_option").equals("Мальчикам")) {
+                type = SearchType.FOR_BOY;
+            }
+            if (request.getParameter("search_option").equals("Мужчинам")) {
+                type = SearchType.FOR_MAN;
+            }
+            if (request.getParameter("search_option").equals("Женщинам")) {
+                type = SearchType.FOR_WOMEN;
+            }
+            if (request.getParameter("search_option").equals("Девочкам")) {
+                type = SearchType.FOR_GIRL;
+            }
+
+            if (searchStr != null && !searchStr.trim().equals("")) {
+                list = goodsList.getGoodsBySearch(searchStr, type);
+            }
         }
     %>
 
