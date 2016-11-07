@@ -4,3 +4,9 @@
 <!DOCTYPE html>
 
 <%@include file="../WEB-INF/jspf/left_menu.jspf" %>
+
+<%@include file="../WEB-INF/jspf/letters.jspf" %>
+
+<div style="float:left; margin-top: 20px;">
+        <h3>Выберите раздел или используйте поиск</h3>
+</div>

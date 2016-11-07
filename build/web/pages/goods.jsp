@@ -8,7 +8,9 @@
 
 <%@include file="../WEB-INF/jspf/left_menu.jspf" %>
 
+<jsp:useBean id="bookList" class="com.vasiliskavrn.shop.web.beans.GoodsList" scope="page"/>
 
+<%@include file="../WEB-INF/jspf/letters.jspf" %>
 
 <%request.setCharacterEncoding("UTF-8");
 
@@ -22,7 +24,7 @@
 
 %>
 
-<jsp:useBean id="bookList" class="com.vasiliskavrn.shop.web.beans.GoodsList" scope="page"/>
+
 
 <div class="book_list">
 
