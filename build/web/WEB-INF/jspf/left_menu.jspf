@@ -4,11 +4,39 @@
     <h4>Одежда:</h4>
     <ul class="nav">
         <jsp:useBean id="clothList" class="com.vasiliskavrn.shop.web.beans.ClothList" scope="application"/>
+        
+        <%
+
+            long selectedClothId = 0;
+
+
+            if (request.getParameter("cloth_id") != null) {
+                selectedClothId = Long.valueOf(request.getParameter("cloth_id"));
+                
+            } else if (session.getAttribute("cloth_id") != null) {
+                selectedClothId = Long.valueOf(session.getAttribute("clothId").toString());
+            }
+            
+            session.setAttribute("clothId", selectedClothId);
+
+        %>
+
+        <li><a href="goods.jsp?cloth_id=0">Все товары</a></li>
+        
+        
+        
         <%
             for (Cloth cloth : clothList.getClothList()) {
+            if (selectedClothId != 0 && selectedClothId == cloth.getId()) {
         %>
-        <li><a href="goods.jsp?cloth_id=<%= cloth.getId()%>&name=<%=cloth.getName()%>"><%=cloth.getName()%></a></li>
+ <li><a style="color:red;" href="goods.jsp?cloth_id=<%=cloth.getId()%>"><%=cloth.getName()%></a></li>
+        <%        } else {
+                    
+        %>
 
-        <%}%>
+ <li><a href="goods.jsp?cloth_id=<%= cloth.getId()%>"><%=cloth.getName()%></a></li>
+        <%                }
+            }
+        %>
     </ul>
 </div>

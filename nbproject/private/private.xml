@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/_prog/VasiliskaVRN001/src/java/com/vasiliskavrn/shop/web/enums/SearchType.java</file>
+            <file>file:/D:/_prog/VasiliskaVRN001/web/WEB-INF/jspf/header.jspf</file>
+            <file>file:/D:/_prog/VasiliskaVRN001/src/java/com/vasiliskavrn/shop/web/servlets/ShowImage.java</file>
+            <file>file:/D:/_prog/VasiliskaVRN001/src/java/com/vasiliskavrn/shop/web/beans/GoodsList.java</file>
+            <file>file:/D:/_prog/VasiliskaVRN001/web/pages/goods.jsp</file>
+            <file>file:/D:/_prog/VasiliskaVRN001/web/WEB-INF/jspf/letters.jspf</file>
+        </group>
     </open-files>
 </project-private>
