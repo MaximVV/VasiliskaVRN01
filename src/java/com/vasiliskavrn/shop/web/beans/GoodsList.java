@@ -28,6 +28,7 @@ public class GoodsList {
             conn = Database.getConnection();                       
             stmt = conn.createStatement();
             
+            System.out.println(str);
             rs = stmt.executeQuery(str);
             while (rs.next()) {
                 Goods goods = new Goods();
@@ -74,12 +75,40 @@ public class GoodsList {
         if (!goodsList.isEmpty()) {
             return goodsList;
         } else {
-            return getGoods("SELECT g.goods_id, goods_art, cl.cloth_name_one, f.firme_name\n" +
-"                              FROM vasiliska2016.goods_tab  g,\n" +
-"                                   vasiliska2016.cloth_tab  cl,\n" +
-"                                   vasiliska2016.firme_tab f\n" +
-"                             WHERE g.goods_id = cl.id_cloth_tab\n" +
-"                               and g.goods_id = f.id_firme_table order by cl.cloth_name_one limit 0,5;");
+            return getGoods("SELECT g.goods_id,g.goods_art,\n" +
+"	   ct.cloth_name_one,\n" +
+"       s.sex_name,\n" +
+"       pr.prod_country,\n" +
+"       cm.comp_name,\n" +
+"       p.price_val,\n" +
+"       f.firme_name,\n" +
+"       c.col_name,\n" +
+"       sz.size_name,\n" +
+"       b.brand_country,\n" +
+"       i.image_cotnent\n" +
+"  FROM vasiliska2016.goods_tab g,\n" +
+"       vasiliska2016.cloth_tab ct,\n" +
+"	   vasiliska2016.sex_tab   s,\n" +
+"       vasiliska2016.producer_tab pr,\n" +
+"       vasiliska2016.composition_tab cm,\n" +
+"       vasiliska2016.price_tab p,\n" +
+"       vasiliska2016.firme_tab f,\n" +
+"       vasiliska2016.color_tab c,\n" +
+"       vasiliska2016.size_tab  sz,\n" +
+"       vasiliska2016.brand_tab  b,\n" +
+"       vasiliska2016.image_tab  i\n" +
+" WHERE 1=1\n" +
+"   and g.goods_cloth = ct.id_cloth_tab\n" +
+"   and g.goods_sex = s.id_sex_tab\n" +
+"   and g.goods_produser = pr.id_producer_tab\n" +
+"   and g.goods_comp = cm.id_comp_tab\n" +
+"   and g.goods_price = p.id_price_tab\n" +
+"   and g.goods_firm = f.id_firme_table\n" +
+"   and g.goods_color = c.id_color_tab\n" +
+"   and g.goods_size = sz.id_size_table\n" +
+"   and g.goods_coun_br = b.id_brand_tab\n" +
+"   and g.goods_image = i.id_image_tab\n" +
+"   order by ct.cloth_name_one limit 0,5;");
         }
     }
     
@@ -122,32 +151,101 @@ public class GoodsList {
         }
     
      public ArrayList<Goods> getGoodsByLetter(String letter) {;
-        return getGoods("SELECT g.goods_id, goods_art, cl.cloth_name_one, f.firme_name\n" +
-"                              FROM vasiliska2016.goods_tab  g,\n" +
-"                                   vasiliska2016.cloth_tab  cl,\n" +
-"                                   vasiliska2016.firme_tab f\n" +
-"                             WHERE g.goods_id = cl.id_cloth_tab\n" +
-"                               and g.goods_id = f.id_firme_table order by cl.cloth_name_one limit 0,5;");
+        return getGoods("SELECT g.goods_id,g.goods_art,\n" +
+"	   ct.cloth_name_one,\n" +
+"       s.sex_name,\n" +
+"       pr.prod_country,\n" +
+"       cm.comp_name,\n" +
+"       p.price_val,\n" +
+"       f.firme_name,\n" +
+"       c.col_name,\n" +
+"       sz.size_name,\n" +
+"       b.brand_country,\n" +
+"       i.image_cotnent\n" +
+"  FROM vasiliska2016.goods_tab g,\n" +
+"       vasiliska2016.cloth_tab ct,\n" +
+"	   vasiliska2016.sex_tab   s,\n" +
+"       vasiliska2016.producer_tab pr,\n" +
+"       vasiliska2016.composition_tab cm,\n" +
+"       vasiliska2016.price_tab p,\n" +
+"       vasiliska2016.firme_tab f,\n" +
+"       vasiliska2016.color_tab c,\n" +
+"       vasiliska2016.size_tab  sz,\n" +
+"       vasiliska2016.brand_tab  b,\n" +
+"       vasiliska2016.image_tab  i\n" +
+" WHERE 1=1\n" +
+"   and g.goods_cloth = ct.id_cloth_tab\n" +
+"   and g.goods_sex = s.id_sex_tab\n" +
+"   and g.goods_produser = pr.id_producer_tab\n" +
+"   and g.goods_comp = cm.id_comp_tab\n" +
+"   and g.goods_price = p.id_price_tab\n" +
+"   and g.goods_firm = f.id_firme_table\n" +
+"   and g.goods_color = c.id_color_tab\n" +
+"   and g.goods_size = sz.id_size_table\n" +
+"   and g.goods_coun_br = b.id_brand_tab\n" +
+"   and g.goods_image = i.id_image_tab\n" +
+"   and substr(ct.cloth_name_one,1,1)='"+ letter +"'\n" +
+"   order by ct.cloth_name_one limit 0,5;");
 
     }
 
     public ArrayList<Goods> getGoodsBySearch(String searchStr, SearchType type) {
-        StringBuilder sql = new StringBuilder("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.image from book b "
-                + "inner join author a on b.author_id=a.id "
-                + "inner join genre g on b.genre_id=g.id "
-                + "inner join publisher p on b.publisher_id=p.id ");
+        StringBuilder sql = new StringBuilder("SELECT g.goods_id,g.goods_art,\n" +
+"	   ct.cloth_name_one,\n" +
+"       s.sex_name,\n" +
+"       pr.prod_country,\n" +
+"       cm.comp_name,\n" +
+"       p.price_val,\n" +
+"       f.firme_name,\n" +
+"       c.col_name,\n" +
+"       sz.size_name,\n" +
+"       b.brand_country,\n" +
+"       i.image_cotnent\n" +
+"  FROM vasiliska2016.goods_tab g,\n" +
+"       vasiliska2016.cloth_tab ct,\n" +
+"	   vasiliska2016.sex_tab   s,\n" +
+"       vasiliska2016.producer_tab pr,\n" +
+"       vasiliska2016.composition_tab cm,\n" +
+"       vasiliska2016.price_tab p,\n" +
+"       vasiliska2016.firme_tab f,\n" +
+"       vasiliska2016.color_tab c,\n" +
+"       vasiliska2016.size_tab  sz,\n" +
+"       vasiliska2016.brand_tab  b,\n" +
+"       vasiliska2016.image_tab  i\n" +
+" WHERE 1=1\n" +
+"   and g.goods_cloth = ct.id_cloth_tab\n" +
+"   and g.goods_sex = s.id_sex_tab\n" +
+"   and g.goods_produser = pr.id_producer_tab\n" +
+"   and g.goods_comp = cm.id_comp_tab\n" +
+"   and g.goods_price = p.id_price_tab\n" +
+"   and g.goods_firm = f.id_firme_table\n" +
+"   and g.goods_color = c.id_color_tab\n" +
+"   and g.goods_size = sz.id_size_table\n" +
+"   and g.goods_coun_br = b.id_brand_tab\n" +
+"   and g.goods_image = i.id_image_tab\n");
 
         if (type == SearchType.FOR_BOY) {
-            sql.append("where lower(a.fio) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
+            sql.append(" and s.sex_name='Мальчики' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
 
         } else if (type == SearchType.FOR_GIRL) {
-            sql.append("where lower(b.name) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
+            sql.append(" and s.sex_name='Девочки' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
         }
-        sql.append("limit 0,5");
+        else if (type == SearchType.FOR_MAN) {
+            sql.append(" and s.sex_name='Мужчины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
+        }
+        else if (type == SearchType.FOR_WOMEN) {
+            sql.append(" and s.sex_name='Женщины' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
+        } 
+        else if (type == SearchType.FOR_ALL) {
+            sql.append(" and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
+        }
+        sql.append(" limit 0,5");
 
-
+        System.out.println(sql.toString());
+        
         return getGoods(sql.toString());
 
+       
 
     }
     

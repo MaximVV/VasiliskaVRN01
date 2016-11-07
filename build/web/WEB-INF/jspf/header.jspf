@@ -46,16 +46,16 @@
                 <div class="search_form">
                     
                     
-                    <form name="search_form" method="GET" action="books.jsp">
-                                    <input type="text" name="search_string" size="110"/>
-                                    <!--<input type="text" name="search_string" value="<%=searchString%>" size="110"/>-->
+                    <form name="search_form" method="GET" action="goods.jsp">
+                                    
+                                    <input type="text" name="search_string" value="<%=searchString%>" size="110"/>
                                     <input class="search_button" type="submit" value="Поиск"/>
                                     <select name="search_option">
-                                         <option>для Всех</option>
-                                         <option>для Мужчин</option>
-                                         <option>для Женщин</option>
-                                         <option>для Мальчиков</option>
-                                         <option>для Девочек</option>
+                                         <option>Всем</option>
+                                         <option>Мужчинам</option>
+                                         <option>Женщиам</option>
+                                         <option>Мальчикам</option>
+                                         <option>Девочекам</option>
                                     </select>
                     </form>                    
                 </div>
