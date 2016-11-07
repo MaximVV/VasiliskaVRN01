@@ -36,7 +36,7 @@ public class ShowImage extends HttpServlet {
         try {
             int index = Integer.valueOf(request.getParameter("index"));
 
-            ArrayList<Goods> list = (ArrayList<Goods>)request.getSession(false).getAttribute("currentGoodsList");
+            ArrayList<Goods> list = (ArrayList<Goods>)request.getSession(false).getAttribute("currentGoodsList");// currentGoodsList
             Goods goods = list.get(index);
             response.setContentLength(goods.getImage().length);
             out.write(goods.getImage());

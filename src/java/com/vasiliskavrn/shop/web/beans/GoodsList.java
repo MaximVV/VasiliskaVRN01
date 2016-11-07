@@ -47,6 +47,7 @@ public class GoodsList {
             }
 
         } catch (SQLException ex) {
+             System.out.println(str);
              System.out.println(ex);
             Logger.getLogger(GoodsList.class.getName()).log(Level.SEVERE, null, ex);
            
