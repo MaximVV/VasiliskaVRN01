@@ -1,0 +1,14 @@
+<%@page import="com.vasiliskavrn.shop.web.beans.Cloth"%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sidebar1">
+    <h4>Одежда:</h4>
+    <ul class="nav">
+        <jsp:useBean id="clothList" class="com.vasiliskavrn.shop.web.beans.ClothList" scope="application"/>
+        <%
+            for (Cloth cloth : clothList.getClothList()) {
+        %>
+        <li><a href="goods.jsp?cloth_id=<%= cloth.getId()%>&name=<%=cloth.getName()%>"><%=cloth.getName()%></a></li>
+
+        <%}%>
+    </ul>
+</div>
