@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/web/pages/main.jsp</file>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/web/pages/goods.jsp</file>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/web/WEB-INF/web.xml</file>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/src/java/com/vasiliskavrn/shop/web/beans/ClothList.java</file>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/web/index.jsp</file>
-            <file>file:/D:/_prog/Vasiliska.git/Vasiliska_01/web/WEB-INF/jspf/header.jspf</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/web/WEB-INF/jspf/letters.jspf</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/src/java/com/vasiliskavrn/shop/web/beans/ClothList.java</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/web/WEB-INF/jspf/header.jspf</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/web/WEB-INF/jspf/left_menu.jspf</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/src/java/com/vasiliskavrn/shop/web/beans/GoodsList.java</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/web/pages/goods.jsp</file>
+            <file>file:/G:/PO/VasiliskaProject/VasiliskaVRN001/web/pages/main.jsp</file>
         </group>
     </open-files>
 </project-private>
