@@ -18,7 +18,7 @@ public class GoodsList {
 
     private ArrayList<Goods> goodsList = new ArrayList<Goods>();
     
-    public finally String DEFULT_SQL = "SELECT g.goods_id,g.goods_art,\n" +
+    public final String DEFULT_SQL = "SELECT g.goods_id,g.goods_art,\n" +
 "	   ct.cloth_name_one,\n" +
 "       s.sex_name,\n" +
 "       pr.prod_country,\n" +
@@ -110,154 +110,34 @@ public class GoodsList {
         if (!goodsList.isEmpty()) {
             return goodsList;
         } else {
-            return getGoods("SELECT g.goods_id,g.goods_art,\n" +
-"	   ct.cloth_name_one,\n" +
-"       s.sex_name,\n" +
-"       pr.prod_country,\n" +
-"       cm.comp_name,\n" +
-"       p.price_val,\n" +
-"       f.firme_name,\n" +
-"       c.col_name,\n" +
-"       sz.size_name,\n" +
-"       b.brand_country,\n" +
-"       i.image_cotnent\n" +
-"  FROM vasiliska2016.goods_tab g,\n" +
-"       vasiliska2016.cloth_tab ct,\n" +
-"	   vasiliska2016.sex_tab   s,\n" +
-"       vasiliska2016.producer_tab pr,\n" +
-"       vasiliska2016.composition_tab cm,\n" +
-"       vasiliska2016.price_tab p,\n" +
-"       vasiliska2016.firme_tab f,\n" +
-"       vasiliska2016.color_tab c,\n" +
-"       vasiliska2016.size_tab  sz,\n" +
-"       vasiliska2016.brand_tab  b,\n" +
-"       vasiliska2016.image_tab  i\n" +
-" WHERE 1=1\n" +
-"   and g.goods_cloth = ct.id_cloth_tab\n" +
-"   and g.goods_sex = s.id_sex_tab\n" +
-"   and g.goods_produser = pr.id_producer_tab\n" +
-"   and g.goods_comp = cm.id_comp_tab\n" +
-"   and g.goods_price = p.id_price_tab\n" +
-"   and g.goods_firm = f.id_firme_table\n" +
-"   and g.goods_color = c.id_color_tab\n" +
-"   and g.goods_size = sz.id_size_table\n" +
-"   and g.goods_coun_br = b.id_brand_tab\n" +
-"   and g.goods_image = i.id_image_tab\n" +
-"   order by ct.cloth_name_one limit 0,5;");
+            
+             StringBuilder sql = new StringBuilder(DEFULT_SQL);
+             sql.append(" order by ct.cloth_name_one  limit 0,5");
+             return getGoods(sql.toString());          
         }
     }
     
     
     public ArrayList<Goods> getGoodsByCloth(long id) {
-              return getGoods("SELECT g.goods_id,g.goods_art,\n" +
-"	   ct.cloth_name_one,\n" +
-"       s.sex_name,\n" +
-"       pr.prod_country,\n" +
-"       cm.comp_name,\n" +
-"       p.price_val,\n" +
-"       f.firme_name,\n" +
-"       c.col_name,\n" +
-"       sz.size_name,\n" +
-"       b.brand_country,\n" +
-"       i.image_cotnent\n" +
-"  FROM vasiliska2016.goods_tab g,\n" +
-"       vasiliska2016.cloth_tab ct,\n" +
-"	   vasiliska2016.sex_tab   s,\n" +
-"       vasiliska2016.producer_tab pr,\n" +
-"       vasiliska2016.composition_tab cm,\n" +
-"       vasiliska2016.price_tab p,\n" +
-"       vasiliska2016.firme_tab f,\n" +
-"       vasiliska2016.color_tab c,\n" +
-"       vasiliska2016.size_tab  sz,\n" +
-"       vasiliska2016.brand_tab  b,\n" +
-"       vasiliska2016.image_tab  i\n" +
-" WHERE 1=1\n" +
-"   and ct.id_cloth_tab = "+ id +" and g.goods_cloth = ct.id_cloth_tab\n" +
-"   and g.goods_sex = s.id_sex_tab\n" +
-"   and g.goods_produser = pr.id_producer_tab\n" +
-"   and g.goods_comp = cm.id_comp_tab\n" +
-"   and g.goods_price = p.id_price_tab\n" +
-"   and g.goods_firm = f.id_firme_table\n" +
-"   and g.goods_color = c.id_color_tab\n" +
-"   and g.goods_size = sz.id_size_table\n" +
-"   and g.goods_coun_br = b.id_brand_tab\n" +
-"   and g.goods_image = i.id_image_tab\n" +
-"   order by ct.cloth_name_one limit 0,5;");
+             StringBuilder sql = new StringBuilder(DEFULT_SQL);
+             sql.append("   and ct.id_cloth_tab = "+ id+ " order by ct.cloth_name_one ");
+             sql.append(" limit 0,5");             
+             System.out.println(sql.toString());
+             return getGoods(sql.toString());
         }
     
-     public ArrayList<Goods> getGoodsByLetter(String letter) {;
-        return getGoods("SELECT g.goods_id,g.goods_art,\n" +
-"	   ct.cloth_name_one,\n" +
-"       s.sex_name,\n" +
-"       pr.prod_country,\n" +
-"       cm.comp_name,\n" +
-"       p.price_val,\n" +
-"       f.firme_name,\n" +
-"       c.col_name,\n" +
-"       sz.size_name,\n" +
-"       b.brand_country,\n" +
-"       i.image_cotnent\n" +
-"  FROM vasiliska2016.goods_tab g,\n" +
-"       vasiliska2016.cloth_tab ct,\n" +
-"	   vasiliska2016.sex_tab   s,\n" +
-"       vasiliska2016.producer_tab pr,\n" +
-"       vasiliska2016.composition_tab cm,\n" +
-"       vasiliska2016.price_tab p,\n" +
-"       vasiliska2016.firme_tab f,\n" +
-"       vasiliska2016.color_tab c,\n" +
-"       vasiliska2016.size_tab  sz,\n" +
-"       vasiliska2016.brand_tab  b,\n" +
-"       vasiliska2016.image_tab  i\n" +
-" WHERE 1=1\n" +
-"   and g.goods_cloth = ct.id_cloth_tab\n" +
-"   and g.goods_sex = s.id_sex_tab\n" +
-"   and g.goods_produser = pr.id_producer_tab\n" +
-"   and g.goods_comp = cm.id_comp_tab\n" +
-"   and g.goods_price = p.id_price_tab\n" +
-"   and g.goods_firm = f.id_firme_table\n" +
-"   and g.goods_color = c.id_color_tab\n" +
-"   and g.goods_size = sz.id_size_table\n" +
-"   and g.goods_coun_br = b.id_brand_tab\n" +
-"   and g.goods_image = i.id_image_tab\n" +
-"   and substr(ct.cloth_name_one,1,1)='"+ letter +"'\n" +
-"   order by ct.cloth_name_one limit 0,5;");
-
-    }
+     public ArrayList<Goods> getGoodsByLetter(String letter) {
+         
+          StringBuilder sql = new StringBuilder(DEFULT_SQL);
+             sql.append(" and substr(ct.cloth_name_one,1,1)='"+ letter + "' order by ct.cloth_name_one ");
+             sql.append(" limit 0,5");             
+             System.out.println(sql.toString());
+             return getGoods(sql.toString());
+     }
 
     public ArrayList<Goods> getGoodsBySearch(String searchStr, SearchType type) {
-        StringBuilder sql = new StringBuilder("SELECT g.goods_id,g.goods_art,\n" +
-"	   ct.cloth_name_one,\n" +
-"       s.sex_name,\n" +
-"       pr.prod_country,\n" +
-"       cm.comp_name,\n" +
-"       p.price_val,\n" +
-"       f.firme_name,\n" +
-"       c.col_name,\n" +
-"       sz.size_name,\n" +
-"       b.brand_country,\n" +
-"       i.image_cotnent\n" +
-"  FROM vasiliska2016.goods_tab g,\n" +
-"       vasiliska2016.cloth_tab ct,\n" +
-"	   vasiliska2016.sex_tab   s,\n" +
-"       vasiliska2016.producer_tab pr,\n" +
-"       vasiliska2016.composition_tab cm,\n" +
-"       vasiliska2016.price_tab p,\n" +
-"       vasiliska2016.firme_tab f,\n" +
-"       vasiliska2016.color_tab c,\n" +
-"       vasiliska2016.size_tab  sz,\n" +
-"       vasiliska2016.brand_tab  b,\n" +
-"       vasiliska2016.image_tab  i\n" +
-" WHERE 1=1\n" +
-"   and g.goods_cloth = ct.id_cloth_tab\n" +
-"   and g.goods_sex = s.id_sex_tab\n" +
-"   and g.goods_produser = pr.id_producer_tab\n" +
-"   and g.goods_comp = cm.id_comp_tab\n" +
-"   and g.goods_price = p.id_price_tab\n" +
-"   and g.goods_firm = f.id_firme_table\n" +
-"   and g.goods_color = c.id_color_tab\n" +
-"   and g.goods_size = sz.id_size_table\n" +
-"   and g.goods_coun_br = b.id_brand_tab\n" +
-"   and g.goods_image = i.id_image_tab\n");
+     
+        StringBuilder sql = new StringBuilder(DEFULT_SQL);                   
 
         if (type == SearchType.FOR_BOY) {
             sql.append(" and s.sex_name='Мальчики' and lower(ct.cloth_name_one) like '%" + searchStr.toLowerCase().substring(0, 4) + "%' order by ct.cloth_name_one  " );
