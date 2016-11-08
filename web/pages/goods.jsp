@@ -71,7 +71,7 @@
 
     <div class="book_info">
         <div class="book_title">
-            <p> <%=goods.getclothG()%></p>
+            <p> <%=goods.getName()%></p>
         </div>
         <div class="book_image">
             <a href="#"><img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(goods)%>" height="250" width="190" alt="Картинка"/></a>
@@ -79,7 +79,7 @@
         </div>
         <div class="book_details">
             <br><strong>Бренд:</strong> <%=goods.getFirme()%>
-            <br><strong>Наименование:</strong> <%=goods.getclothG()%>
+            <br><strong>Наименование:</strong> <%=goods.getName()%>
             <br><strong>Страна пр-ва:</strong> <%=goods.getCountryMade()%>
             <br><strong>Цена:</strong> <%=goods.getPrice()%>
             <p style="margin:10px;"> <a href="#">Подробнее</a></p>

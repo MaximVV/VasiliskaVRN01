@@ -7,15 +7,15 @@ public class Goods {
     public Goods() {
     }
 
-     public Goods(String clothG, long id) {
-        this.clothG= clothG;
+     public Goods(String name, long id) {
+        this.name = name;
         this.id = id;
     }
     
      
     private String article;    
     private String sex;     
-    private String clothG;  
+    private String name;  
     private String countryMade;    
     private String countryBrand;    
     private String composition;
@@ -34,12 +34,12 @@ public class Goods {
         return id;
     }
      
-    public String getclothG() {
-        return clothG;
+    public String getName() {
+        return name;
     }
 
-    public void setclothG(String clothG) {
-        this.clothG = clothG;
+    public void setName(String name) {
+        this.name = name;
     }
      
     public String getArticle() {

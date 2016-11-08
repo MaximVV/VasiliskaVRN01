@@ -17,6 +17,41 @@ import java.awt.Image;
 public class GoodsList {
 
     private ArrayList<Goods> goodsList = new ArrayList<Goods>();
+    
+    public finally String DEFULT_SQL = "SELECT g.goods_id,g.goods_art,\n" +
+"	   ct.cloth_name_one,\n" +
+"       s.sex_name,\n" +
+"       pr.prod_country,\n" +
+"       cm.comp_name,\n" +
+"       p.price_val,\n" +
+"       f.firme_name,\n" +
+"       c.col_name,\n" +
+"       sz.size_name,\n" +
+"       b.brand_country,\n" +
+"       i.image_cotnent\n" +
+"  FROM vasiliska2016.goods_tab g,\n" +
+"       vasiliska2016.cloth_tab ct,\n" +
+"	   vasiliska2016.sex_tab   s,\n" +
+"       vasiliska2016.producer_tab pr,\n" +
+"       vasiliska2016.composition_tab cm,\n" +
+"       vasiliska2016.price_tab p,\n" +
+"       vasiliska2016.firme_tab f,\n" +
+"       vasiliska2016.color_tab c,\n" +
+"       vasiliska2016.size_tab  sz,\n" +
+"       vasiliska2016.brand_tab  b,\n" +
+"       vasiliska2016.image_tab  i\n" +
+" WHERE 1=1\n" +
+"   and g.goods_cloth = ct.id_cloth_tab\n" +
+"   and g.goods_sex = s.id_sex_tab\n" +
+"   and g.goods_produser = pr.id_producer_tab\n" +
+"   and g.goods_comp = cm.id_comp_tab\n" +
+"   and g.goods_price = p.id_price_tab\n" +
+"   and g.goods_firm = f.id_firme_table\n" +
+"   and g.goods_color = c.id_color_tab\n" +
+"   and g.goods_size = sz.id_size_table\n" +
+"   and g.goods_coun_br = b.id_brand_tab\n" +
+"   and g.goods_image = i.id_image_tab ";
+    
 
     private ArrayList<Goods> getGoods(String str) {
         
@@ -28,13 +63,13 @@ public class GoodsList {
             conn = Database.getConnection();                       
             stmt = conn.createStatement();
             
-            System.out.println(str);
+            //System.out.println(str);
             rs = stmt.executeQuery(str);
             while (rs.next()) {
                 Goods goods = new Goods();
                 goods.setId(rs.getLong("goods_id"));
                 goods.setArticle(rs.getString("goods_art"));
-                goods.setclothG(rs.getString("cloth_name_one"));
+                goods.setName(rs.getString("cloth_name_one"));
                 goods.setSex(rs.getString("sex_name"));
                 goods.setCountryMade(rs.getString("prod_country"));
                 goods.setPrice(rs.getString("price_val"));
@@ -48,8 +83,8 @@ public class GoodsList {
             }
 
         } catch (SQLException ex) {
-             System.out.println(str);
-             System.out.println(ex);
+             //System.out.println(str);
+             //System.out.println(ex);
             Logger.getLogger(GoodsList.class.getName()).log(Level.SEVERE, null, ex);
            
         } finally {
